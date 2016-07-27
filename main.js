@@ -11,26 +11,81 @@
 
 */
 var app = {};
-var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 var apiKey = '0230bf02702536cff53832eef68ab815';
 
-app.init = function(){
-};
+var userLocation = {};
 
 app.getData = function(){
 	$.ajax({
-	url: weatherUrl + 'london' + '&appid=' + apiKey,
-	success: function(response){
-
-		console.log('response====>', response)
-		console.log('response CITY====>', response.city)
-		console.log('response name====>', response.city.name);
-		console.log('response name====>', response.list[0].dt_txt);
-	},
+		url: weatherUrl + userLocation.place + "&appid=" + apiKey,
+		success: function(response){
+			var returnWeather = response.weather[0].main;
+			console.log(returnWeather);
+		}
 	});
 };
 
+app.handleSubmit = function(event){
+	event.preventDefault();
+	userLocation.place = $('#location').val();
+	$('#location').focus().val('');
+	$('#userLocation').html(userLocation);
+	app.getData();
+};
 
-$(document).ready(app.getData);
+app.init = function(){
+	$('form').on('submit', app.handleSubmit);
+};
+
+$(document).ready(app.init);
+
+
+
+// var app = {};
+// var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+// var apiKey = '0230bf02702536cff53832eef68ab815';
+
+// app.init = function(){
+// };
+
+// app.getData = function(){
+// 	$.ajax({
+// 	url: weatherUrl + 'london' + '&appid=' + apiKey,
+// 		success: function(response){
+
+// 		console.log('response ==>', response);
+// 		console.log('response list==>', response.list);
+
+// 		var mainWeatherResults = [];
+// 		for (var i = 0; i < response.list.length; i ++){
+// 		mainWeatherResults.push(response.list[i].dt_txt, response.list[i].main.temp, response.list[i].main.humidity, response.list[i].weather[0].description, response.list[i].clouds.all, response.list[i].rain);
+// 		// $('#listWeather').html(mainWeatherResults);
+// 		};
+// 		console.log('results ==>', mainWeatherResults)
+
+// 		var weatherMain = [];
+// 		for (var i = 0; i < response.list.length; i ++){
+// 		weatherMain.push(response.list[i].main);
+// 		};
+// 		console.log("just main ==>", weatherMain);
+
+// 		var weatherTemp = [];
+// 		for (var i = 0; i < weatherMain.length; i ++){
+// 		weatherTemp.push(weatherMain[i].temp);
+
+// 		};
+// 		console.log("weather temp ==>", weatherTemp);
+
+// 		$.each(response.list, function(index, value) {
+//     		$('#listTemp').html(dt_txt)
+// 		});
+
+// 		},
+// 	});
+// };
+
+
+// $(document).ready(app.getData);
 
 
