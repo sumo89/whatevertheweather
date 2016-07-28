@@ -27,6 +27,7 @@ app.getData = function(){
 			var humidity = response.main.humidity;
 			var windSpeed = response.wind.speed;
 			var myDate = new Date(response.sys.sunset *1000);
+			tempReplace.far = temperature * 9/5 + 32;
 
 			$('#weatherDescriptionMain').html(weatherDescriptionMain);
 			$('#weatherDescriptionDetail').html(weatherDescriptionDetail);
@@ -42,11 +43,12 @@ app.tempToggle = function(){
 	$(this).toggleClass('toggle-button-selected');
 	$('#farenheit').toggleClass('farenheit');
 	$('#celcius').toggle();
-	tempReplace.temp = $('#temperature').val();
 
-	$('#temperature').html((tempReplace.temp * 9/5 + 32), "°F");
-	console.log(tempReplace.temp);
+	// tempReplace.temp = $('#temperature').val();
+	$('#temperature').html(tempReplace.far + "°F");
 };
+
+ // * 9/5 + 32
 
 app.handleSubmit = function(event){
 	event.preventDefault();

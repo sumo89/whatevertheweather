@@ -38,6 +38,9 @@ body{
 	text-align: center;
 	flex-wrap: wrap;
 }
+.weatherBox p{
+	font-size: 1.5em;
+}
 .button_wrap{
 	text-align: center;
 	font-size: 1em;
