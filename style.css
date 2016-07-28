@@ -1,0 +1,58 @@
+body{
+	background-color: #DEFFFC;
+}
+.header {
+	display: flex;
+	justify-content: center;
+	margin: 0 10% 0 10%; 
+}
+.header h1 {
+	font-size: 5em;
+	font-family: helvetica;
+}
+.form_wrap{
+	min-width: 10em;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5%;
+}
+.text_box{
+	font-size: 3em;
+}
+.submitBox{
+	display: block;
+	margin: auto;
+	font-size: 3em;
+}
+.weatherBoxWrap::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+.weatherBox{
+	float: left;
+	max-width: 30%;
+	min-width: 28%;
+	margin: 0.5em;
+	padding: 1em;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.button_wrap{
+	text-align: center;
+	font-size: 1em;
+	margin-top: 25%;
+	border-top: 1px solid #8CA1A0;
+	max-width: 50%;
+	margin: auto;
+}
+.toggle-button { background-color: white; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
+.toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: white; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
+.toggle-button-selected { background-color: #83B152; border: 2px solid #7DA652; }
+.toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
+.farenheit{
+	display: none;
+}
+.farenheitToggle{
+	display: ;
+}

@@ -7,19 +7,56 @@
 </head>
 <body>
 
-	<div>
+	<div class='header'>
 		<h1>
 		This is the weather in <span id='userLocation'></span>
 		</h1>
 	</div>
-	<div id='listWeather'>
-		<form>
-			<input type="text" id="location">
-			<input type="submit" id="submit" name="locationSubmit">
+	<div class='weather-image' id='weatherImage'>
+	</div>
+	<div id='listWeather' class='form_wrap'>
+		<form class='form'>
+			<input type="text" id="location" class='text_box'>
+			<input type="submit" id="submit" name="locationSubmit" class='submitBox'>
 		</form>
 	</div>
-	<div id='listTemp'>
-		temp
+	<div class='weatherBoxWrap'>
+		<div class='weatherBox'>
+			Mostly
+			<p id='weatherDescriptionMain'></p>
+		</div>
+		<div class='weatherBox'>
+			Description
+			<p id='weatherDescriptionDetail'></p>
+		</div>
+		<div class='weatherBox'>
+			Temperature
+			<p id='temperature'></p>
+		</div>
+		<div class='weatherBox'>
+			Humidity
+			<p id='humidity'></p>
+		</div>
+		<div class='weatherBox'>
+			Wind
+			<p id='windSpeed'></p>
+		</div>
+		<div class='weatherBox'>
+			Sunset
+			<p id='listTemp'></p>
+		</div>
+	</div>
+	<div class='button_wrap'>
+	<p id='celcius'>
+		Celcius
+	</p>
+	<p id='farenheit' class='farenheit'>
+		Ferenheit
+	</p>
+		<div class="toggle-button" id='toggle-button'>
+			<button>
+			</button>
+		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
