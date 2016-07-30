@@ -13,6 +13,7 @@
 var app = {};
 var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 var apiKey = '0230bf02702536cff53832eef68ab815';
+var iconUrl = 'http://openweathermap.org/img/w/';
 
 var userLocation = {};
 var tempReplace = {};
@@ -27,28 +28,39 @@ app.getData = function(){
 			var humidity = response.main.humidity;
 			var windSpeed = response.wind.speed;
 			var myDate = new Date(response.sys.sunset *1000);
-			tempReplace.far = temperature * 9/5 + 32;
+			var temperatureFar = (temperature * 9/5 + 32);
+			var weatherIconUrl = iconUrl + response.weather[0].icon + '.png';
+
+			console.log(response.weather[0].icon);
+			console.log(weatherIconUrl);
 
 			$('#weatherDescriptionMain').html(weatherDescriptionMain);
 			$('#weatherDescriptionDetail').html(weatherDescriptionDetail);
-			$('#temperature').html(temperature + "°C");
-			$('#humidity').html(humidity, + "\%");
-			$('#windSpeed').html(windSpeed + "m/s");
+			$('#temperatureCel').html(temperature + "°C");
+			$('#tempuratureFar').html(temperatureFar + "°F");
+			$('#humidity').html(humidity + "%");
+			$('#windSpeed').html(windSpeed + " m/s");
 			$('#listTemp').html(myDate.toLocaleString());
+			// $('#icon').html('<img src=' + weatherIconUrl + '/>')
+			// $('#icon').html('<img src="http://openweathermap.org/img/w/02n.png"/>')
+			$('#weatherIconId').attr('src', weatherIconUrl);
+
 		}
 	});
 };
+
+// list.weather[1]
+
 
 app.tempToggle = function(){
 	$(this).toggleClass('toggle-button-selected');
 	$('#farenheit').toggleClass('farenheit');
 	$('#celcius').toggle();
-
-	// tempReplace.temp = $('#temperature').val();
-	$('#temperature').html(tempReplace.far + "°F");
+	$('#tempuratureFar').toggleClass('tempuratureFar');
+	$('#temperatureCel').toggle();
+	//toggle makes the selected element display:none by default.
+	//toggleClass is to remove the display:none styling I set.
 };
-
- // * 9/5 + 32
 
 app.handleSubmit = function(event){
 	event.preventDefault();

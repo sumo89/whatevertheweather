@@ -57,5 +57,11 @@ body{
 	display: none;
 }
 .farenheitToggle{
-	display: ;
+	color: red;
+}
+.tempuratureFar{
+	display: none;
+}
+.weatherIconId{
+	
 }
